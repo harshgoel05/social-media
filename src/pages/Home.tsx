@@ -6,7 +6,7 @@ function Home() {
           <div className="mx-auto flex justify-center flex-col">
             <img
               src="/assets/home.svg"
-              className="w-9/12 sm:w-6/12 lg:9/12 mx-auto"
+              className="w-9/12 sm:w-6/12 lg:w-9/12 mx-auto"
             ></img>
             <div className="flex lg:hidden justify-center mt-6">
               <a href="/create">
