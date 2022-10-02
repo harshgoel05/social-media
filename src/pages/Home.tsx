@@ -19,13 +19,15 @@ function Home() {
               media
             </p>
             <div className="flex justify-end mt-6">
-              <button
-                type="button"
-                className="
+              <a href="/create">
+                <button
+                  type="button"
+                  className="
           text-white bg-gradient-to-br from-primary3 to-primary4 font-medium rounded-lg text-md px-10 py-2.5 text-center"
-              >
-                🎉 Create my event
-              </button>
+                >
+                  🎉 Create my event
+                </button>
+              </a>
             </div>
           </div>
         </div>
