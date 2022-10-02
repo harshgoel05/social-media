@@ -2,11 +2,13 @@ import { ImCalendar, ImLocation } from "react-icons/im";
 function Event() {
   return (
     <div className="bg-light">
-      <div className="container mx-auto h-screen ">
-        <div className="flex flex-col-reverse lg:flex-row justify-center items-center h-full">
-          <div className="mx-auto">
-            <h1 className="text-5xl text-primary1 font-bold">Birthday Bash</h1>
-            <p className="text-net2 text-md">
+      <div className="container mx-auto lg:h-screen">
+        <div className="flex flex-col-reverse lg:flex-row justify-center sm:items-center h-full">
+          <div className="ml-7 sm:mx-auto sm:w-6/12 mt-6 lg:mt-0">
+            <h1 className="text-3xl lg:text-5xl text-primary1 font-bold">
+              Birthday Bash
+            </h1>
+            <p className="text-net2 text-sm lg:text-md">
               Hosted by <span className="text-bold">Elysia</span>
             </p>
             <div className="flex flex-col mt-4 gap-4">
@@ -34,7 +36,11 @@ function Event() {
             </div>
           </div>
           <div className="mx-auto">
-            <img src="/assets/event.svg" className="w-9/12" alt="Event" />
+            <img
+              src="/assets/event.svg"
+              className="w-100 sm:w-8/12 sm:mt-10 md: mt-0 lg:w-9/12 mx-auto"
+              alt="Event"
+            />
           </div>
         </div>
       </div>
