@@ -12,13 +12,20 @@ function Create() {
     state: "",
     post: "",
   });
-
+  const [isInvalid, setIsInvalid] = useState(
+    Object.values(formData).findIndex((el) => el == "") != -1
+  );
   let navigate = useNavigate();
 
   const printValues = (e: any) => {
     e.preventDefault();
-    console.log(formData);
+    console.log(formData); // prints for data
     navigate("/event");
+  };
+
+  const setValue = (name: string, value: string) => {
+    setFormData({ ...formData, [name]: value });
+    setIsInvalid(Object.values(formData).findIndex((el) => el == "") != -1);
   };
   return (
     <div className="bg-light">
@@ -46,13 +53,8 @@ function Create() {
                     type="text"
                     placeholder="Jane"
                     value={formData.firstName}
-                    onChange={(e) =>
-                      setFormData({ ...formData, firstName: e.target.value })
-                    }
+                    onChange={(e) => setValue("firstName", e.target.value)}
                   />
-                  <p className="text-alert-red-2 text-xs italic">
-                    Please fill out this field.
-                  </p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                   <label
@@ -67,9 +69,7 @@ function Create() {
                     type="text"
                     placeholder="Doe"
                     value={formData.lastName}
-                    onChange={(e) =>
-                      setFormData({ ...formData, lastName: e.target.value })
-                    }
+                    onChange={(e) => setValue("lastName", e.target.value)}
                   />
                 </div>
               </div>
@@ -87,9 +87,7 @@ function Create() {
                     type="text"
                     placeholder="Birthday Bash"
                     value={formData.eventName}
-                    onChange={(e) =>
-                      setFormData({ ...formData, eventName: e.target.value })
-                    }
+                    onChange={(e) => setValue("eventName", e.target.value)}
                   />
                   <p className="text-gray-600 text-xs italic">
                     Name it something crazyyyy! 🥳
@@ -110,9 +108,7 @@ function Create() {
                     type="text"
                     placeholder="Street 101 Cross"
                     value={formData.street}
-                    onChange={(e) =>
-                      setFormData({ ...formData, street: e.target.value })
-                    }
+                    onChange={(e) => setValue("street", e.target.value)}
                   />
                 </div>
               </div>
@@ -130,9 +126,7 @@ function Create() {
                     type="text"
                     placeholder="Sydney"
                     value={formData.city}
-                    onChange={(e) =>
-                      setFormData({ ...formData, city: e.target.value })
-                    }
+                    onChange={(e) => setValue("city", e.target.value)}
                   />
                 </div>
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -146,6 +140,7 @@ function Create() {
                     <select
                       className="block appearance-none w-full bg-net5 border border-net5 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="state"
+                      onChange={(e) => setValue("state", e.target.value)}
                     >
                       <option>New Mexico</option>
                       <option>Missouri</option>
@@ -177,19 +172,26 @@ function Create() {
                     type="text"
                     placeholder="826001"
                     value={formData.post}
-                    onChange={(e) =>
-                      setFormData({ ...formData, post: e.target.value })
-                    }
+                    onChange={(e) => setValue("post", e.target.value)}
                   />
                 </div>
               </div>
             </div>
+            {isInvalid && (
+              <p className="text-alert-red-2 text-xs italic">
+                Please fill out all the fields!
+              </p>
+            )}
             <button
               type="submit"
+              disabled={isInvalid}
               className="mt-3 text-white bg-gradient-to-br from-primary3 to-primary4 font-medium rounded-lg text-md px-10 py-2.5 text-center"
             >
               🎪 Submit Event
             </button>
+            <p className="text-gray-600 text-xs italic mt-4">
+              (PS: We print data in console on submitting) 🥳
+            </p>
           </form>
         </div>
       </div>
