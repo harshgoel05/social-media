@@ -10,8 +10,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .leading-loose{
-  line-height: 2.8rem !important;
+  line-height: 1.8rem !important;
+}
+
+@media (min-width: 1024px){
+  .leading-loose{
+    line-height: 2.8rem !important;
+  }
 }
 
 @tailwind utilities;
